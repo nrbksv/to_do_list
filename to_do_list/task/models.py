@@ -2,6 +2,8 @@ from django.db import models
 
 
 class Task(models.Model):
+    STATUS_CHOICES = [('new', 'Новая'), ('in_progress', 'В процессе'), ('done', 'Сделано')]
+
     status = models.CharField(max_length=20, default='new', blank=True)
     description = models.TextField(max_length=1000, null=False, blank=False)
     deadline = models.DateField(blank=True, null=True)

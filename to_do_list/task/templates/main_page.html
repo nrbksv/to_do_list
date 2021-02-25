@@ -1,25 +1,67 @@
 {% extends 'page_pattern.html' %}
 
 {% block content %}
-    <div class="card text-center mx-auto" style="width: 70%;">
-      <div class="card-header">
-        <ul class="nav nav-pills card-header-pills">
+     <div class="card-header">
+        <ul class="nav nav-tabs card-header-tabs">
           <li class="nav-item">
-            <a class="nav-link active" href="#">Текущие задачи</a>
+            <a class="nav-link active" href="/">Текущие задачи</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/add/">Добавить новую</a>
+            <a class="nav-link" href="/add/">Добавить задачу</a>
           </li>
         </ul>
-      </div>
-      <div class="card-body">
+     </div>
+      <div class="card-body mx-4 ">
+        <div class="card-header">
+            <ul class="nav nav-pills card-header-pills">
+              <li class="nav-item">
+                <a class="nav-link {{ all }}" href="/">Все</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link {{ new }}" href="/status?st=new">Новые</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link {{ in_progress }}" href="/status?st=in_progress">В процессе</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link {{ done }}" href="/status?st=done">Сделано</a>
+              </li>
+            </ul>
+        </div>
+          <br>
+        {% if tasks %}
           {% for task in tasks %}
-        <p>Статус: {{ task.status }}</p>
-        <p>Выполнить до: {{ task.deadline }}</p>
-          <hr>
-        <p class="card-text"><b>Задача: </b><i>{{ task.description }}</i></p>
-          <hr>
+              {% for i, j in status_ru %}
+                  {% if task.status == i %}
+                    <div class="card">
+                      <div class="card-header">
+                       <b>Статус:</b>
+                            {{ j }}
+                      </div>
+                  {% endif %}
+              {% endfor %}
+
+              <div class="card-body">
+                <h5 class="card-title">Задача:</h5>
+                  <hr>
+                <p class="card-text"><i>{{ task.description }}</i></p>
+              </div>
+              <div class="card-footer text-right">
+                <p>Выполнить до:
+                    <b>
+                    {% if task.deadline %}
+                    {{ task.deadline }}
+                    {% else %}
+                    {{ 'не ограничен' }}
+                    {% endif %}
+                    </b>
+                </p>
+              </div>
+            </div>
+                  <br>
           {% endfor %}
+        {% else %}
+            <h3>{{ 'Пусто' }}</h3>
+        {% endif %}
       </div>
-    </div>
 {% endblock %}
