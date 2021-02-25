@@ -39,3 +39,12 @@ def filtered_view(request):
         'status_ru': Task.STATUS_CHOICES,
     }
     return render(request, 'main_page.html', context)
+
+
+def delete_view(request):
+    del_id = request.GET.get('id')
+    Task.objects.get(id=del_id).delete()
+    tasks = Task.objects.all()
+    context = {'tasks': tasks, 'status_ru': Task.STATUS_CHOICES, 'all': 'active'}
+    return render(request, 'main_page.html', context)
+

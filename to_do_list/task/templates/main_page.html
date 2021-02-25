@@ -40,24 +40,22 @@
                       </div>
                   {% endif %}
               {% endfor %}
-
-              <div class="card-body">
-                <h5 class="card-title">Задача:</h5>
-                  <hr>
-                <p class="card-text"><i>{{ task.description }}</i></p>
-              </div>
-              <div class="card-footer text-right">
-                <p>Выполнить до:
-                    <b>
-                    {% if task.deadline %}
-                    {{ task.deadline }}
-                    {% else %}
-                    {{ 'не ограничен' }}
-                    {% endif %}
-                    </b>
-                </p>
-              </div>
-            </div>
+                      <div class="card-body">
+                        <p class="card-text"><i>{{ task.description }}</i></p>
+                        <a class="btn btn-secondary" href="/delete?id={{ task.id }}">Удалить</a>
+                      </div>
+                      <div class="card-footer text-right">
+                        <p>Выполнить до:
+                            <b>
+                            {% if task.deadline %}
+                            {{ task.deadline }}
+                            {% else %}
+                            {{ 'не ограничен' }}
+                            {% endif %}
+                            </b>
+                        </p>
+                      </div>
+                    </div>
                   <br>
           {% endfor %}
         {% else %}
