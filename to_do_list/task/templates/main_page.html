@@ -13,8 +13,13 @@
         </ul>
       </div>
       <div class="card-body">
-        <h5 class="card-title">Выполнить до</h5>
-        <p class="card-text">Описание задачи</p>
+          {% for task in tasks %}
+        <p>Статус: {{ task.status }}</p>
+        <p>Выполнить до: {{ task.deadline }}</p>
+          <hr>
+        <p class="card-text"><b>Задача: </b><i>{{ task.description }}</i></p>
+          <hr>
+          {% endfor %}
       </div>
     </div>
 {% endblock %}
