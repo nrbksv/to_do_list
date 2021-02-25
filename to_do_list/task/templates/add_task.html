@@ -1,0 +1,33 @@
+{% extends 'page_pattern.html' %}
+
+{% block content %}
+      <div class="card-header">
+        <ul class="nav nav-pills card-header-pills">
+          <li class="nav-item">
+            <a class="nav-link" href="/">Текущие задачи</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="/add/">Добавить новую</a>
+          </li>
+        </ul>
+      </div>
+      <div class="card-body">
+        <form action="" method="POST">
+            {% csrf_token %}
+            <div class="form-group row px-5">
+                <label for="status">Статус: </label>
+                <select class="form-control form-control-sm" name="status">'
+                    <option value="new">Новая</option>
+                    <option value="in_progress">В процессе</option>
+                    <option value="done">Сделано</option>
+                </select>
+                <label for="description">Задача:</label>
+                <input class="form-control form-control-sm" type="text" name="description" placeholder="Описание задачи" required>
+                <label for="date">Выполнить до:</label>
+                <input class="form-control form-control-sm" type="text" name="deadline" placeholder="2020-01-01">
+                <small id="HelpBlock" class="form-text text-muted">Вводите дату в формате ГГГГ-ММ-ДД.</small>
+            </div>
+            <input type="button" value="Добавить"/>
+        </form>
+      </div>
+{% endblock %}
