@@ -1,11 +1,32 @@
 [
 {
   "model": "task.task",
+  "pk": 1,
+  "fields": {
+    "status": "new",
+    "task_title": "Задача",
+    "full_description": "Подробное описание",
+    "deadline": "2021-03-05"
+  }
+},
+{
+  "model": "task.task",
+  "pk": 3,
+  "fields": {
+    "status": "new",
+    "task_title": "Задача",
+    "full_description": "",
+    "deadline": null
+  }
+},
+{
+  "model": "task.task",
   "pk": 4,
   "fields": {
     "status": "new",
-    "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium, autem consequatur dolor dolores facere illo ipsa ipsam laboriosam mollitia possimus quasi quisquam sed, temporibus totam velit! Animi ipsam reiciendis rerum.",
-    "deadline": null
+    "task_title": "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
+    "full_description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
+    "deadline": "2021-03-06"
   }
 },
 {
@@ -13,8 +34,9 @@
   "pk": 5,
   "fields": {
     "status": "in_progress",
-    "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium, autem consequatur dolor dolores facere illo ipsa ipsam laboriosam mollitia possimus quasi quisquam sed, temporibus totam velit! Animi ipsam reiciendis rerum.",
-    "deadline": "2021-03-03"
+    "task_title": "Qwe Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
+    "full_description": null,
+    "deadline": null
   }
 },
 {
@@ -22,17 +44,9 @@
   "pk": 6,
   "fields": {
     "status": "done",
-    "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium, autem consequatur dolor dolores facere illo ipsa ipsam laboriosam mollitia possimus quasi quisquam sed, temporibus totam velit! Animi ipsam reiciendis rerum.",
-    "deadline": "2020-01-01"
-  }
-},
-{
-  "model": "task.task",
-  "pk": 7,
-  "fields": {
-    "status": "new",
-    "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium, autem consequatur dolor dolores facere illo ipsa ipsam laboriosam mollitia possimus quasi quisquam sed, temporibus totam velit! Animi ipsam reiciendis rerum.",
-    "deadline": "2021-03-03"
+    "task_title": "Lorem ipsum dolor sit.",
+    "full_description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
+    "deadline": "2021-02-01"
   }
 }
 ]
