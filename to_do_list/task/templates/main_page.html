@@ -4,56 +4,47 @@
      <div class="card-header">
         <ul class="nav nav-tabs card-header-tabs">
           <li class="nav-item">
-            <a class="nav-link active" href="/">Текущие задачи</a>
+            <a class="nav-link nl-active">Все задачи</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/add/">Добавить задачу</a>
+            <a class="nav-link nl" href="{% url 'task-add' %}">Добавить задачу</a>
           </li>
         </ul>
      </div>
       <div class="card-body mx-4 ">
-        <div class="card-header">
-            <ul class="nav nav-pills card-header-pills">
-              <li class="nav-item">
-                <a class="nav-link {{ all }}" href="/">Все</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link {{ new }}" href="/status?st=new">Новые</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link {{ in_progress }}" href="/status?st=in_progress">В процессе</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link {{ done }}" href="/status?st=done">Сделано</a>
-              </li>
-            </ul>
-        </div>
+      <div class="btn-group mb-4">
+          <a href="{% url 'task-list' %}" class="btn filter-btn {{ all }}" aria-current="page">Все</a>
+          <a href="/task/status?st=new" class="btn filter-btn {{ new }}">Новая</a>
+          <a href="/task/status?st=in_progress" class="btn filter-btn {{ in_progress }}">В процессе</a>
+          <a href="/task/status?st=done" class="btn filter-btn {{ done }}">Сделано</a>
+      </div>
           <br>
         {% if tasks %}
           {% for task in tasks %}
               {% for i, j in status_ru %}
                   {% if task.status == i %}
                     <div class="card">
-                      <div class="card-header">
-                       <b>Статус:</b>
+                      <div class="card-header d-flex justify-content-between">
+                       <div><b>Статус:</b>
                             {{ j }}
+                       </div>
+                      <div>
+                        {% if task.deadline %}
+                        <p>Выполнить до:
+                        <b>
+                        {{ task.deadline }}
+                        {% else %}
+                        {{ '.....' }}
+                        {% endif %}
+                        </b>
+                        </p>
+                      </div>
                       </div>
                   {% endif %}
               {% endfor %}
                       <div class="card-body">
-                        <p class="card-text"><i>{{ task.description }}</i></p>
-                        <a class="btn btn-secondary" href="/delete?id={{ task.id }}">Удалить</a>
-                      </div>
-                      <div class="card-footer text-right">
-                        <p>Выполнить до:
-                            <b>
-                            {% if task.deadline %}
-                            {{ task.deadline }}
-                            {% else %}
-                            {{ 'не ограничен' }}
-                            {% endif %}
-                            </b>
-                        </p>
+                        <p class="card-text"><i>{{ task.task_title | truncatewords_html:3 }}</i></p>
+                        <a class="detail-link" href="{% url 'task-detail' task.id %}">Подробнее...</a>
                       </div>
                     </div>
                   <br>
