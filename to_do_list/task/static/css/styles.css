@@ -1,0 +1,71 @@
+.content {
+    background: #eee;
+}
+.my-card {
+    background: #ffffff;
+}
+
+.filter-btn {
+    background: #b6b5b5;
+    color: #ffffff;
+}
+
+.filter-btn:hover {
+    background: #929191;
+    color: #ffffff;
+}
+
+.filter-btn-active {
+    background: #929191;
+    color: #000000;
+}
+
+.nav-link {
+    background: #d4d4d4;
+    color: #000000;
+    text-decoration: none;
+}
+
+.nl:hover {
+    background: #818181;
+    color: #fff;
+    text-decoration: none;
+}
+
+.nl-active {
+    background: #ffffff;
+    color: #000;
+    text-decoration: none;
+}
+
+.ch {
+    background: #818181;
+}
+
+.ch-in {
+    background: #eeeeee;
+}
+
+.detail-link-1 {
+    text-decoration: none;
+    color: black;
+    transition: 150ms;
+}
+
+.detail-link-1:hover {
+    text-decoration: none;
+    color: black;
+    transform: scaleX(1.01);
+}
+
+.detail-link-2 {
+    text-decoration: none;
+    color: #818181;
+}
+
+.detail-link-2:hover {
+    text-decoration: none;
+    color: black;
+}
+
+

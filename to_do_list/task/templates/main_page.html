@@ -1,7 +1,8 @@
 {% extends 'page_pattern.html' %}
+{% load static %}
 
 {% block content %}
-     <div class="card-header">
+     <div class="card-header ch">
         <ul class="nav nav-tabs card-header-tabs">
           <li class="nav-item">
             <a class="nav-link nl-active">Все задачи</a>
@@ -24,7 +25,8 @@
               {% for i, j in status_ru %}
                   {% if task.status == i %}
                     <div class="card">
-                      <div class="card-header d-flex justify-content-between">
+                        <a class="detail-link-1" href="{% url 'task-detail' task.id %}">
+                      <div class="card-header d-flex justify-content-between ch-in">
                        <div><b>Статус:</b>
                             {{ j }}
                        </div>
@@ -40,11 +42,12 @@
                         </p>
                       </div>
                       </div>
+                      </a>
                   {% endif %}
               {% endfor %}
                       <div class="card-body">
                         <p class="card-text"><i>{{ task.task_title | truncatewords_html:3 }}</i></p>
-                        <a class="detail-link" href="{% url 'task-detail' task.id %}">Подробнее...</a>
+                        <a class="detail-link-2" href="{% url 'task-detail' task.id %}">Подробнее...</a>
                       </div>
                     </div>
                   <br>
