@@ -5,7 +5,8 @@ class Task(models.Model):
     STATUS_CHOICES = [('new', 'Новая'), ('in_progress', 'В процессе'), ('done', 'Сделано')]
 
     status = models.CharField(max_length=20, default='new', blank=True)
-    description = models.TextField(max_length=1000, null=False, blank=False)
+    task_title = models.CharField(max_length=200, null=False, blank=False)
+    full_description = models.TextField(max_length=2000, null=True, blank=True)
     deadline = models.DateField(blank=True, null=True)
 
     class Meta:
@@ -14,4 +15,4 @@ class Task(models.Model):
         verbose_name_plural = 'Задачи'
 
     def __str__(self):
-        return f'{self.status} {self.deadline} {self.description}'
+        return f'{self.status} {self.task_title} {self.full_description} {self.deadline}'
