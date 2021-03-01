@@ -20,12 +20,8 @@
                 <div class="card">
                   <div class="card-header d-flex flex-row justify-content-between ch-in">
                   <div>
-                  {% for i, j in status_ru %}
-                      {% if task.status == i %}
-                           <b>Статус:</b>
-                                {{ j }}
-                      {% endif %}
-                  {% endfor %}
+                   <b>Статус:</b>
+                        {{ task.get_status_display }}
                   </div>
                     <div>
                         {% if task.deadline %}

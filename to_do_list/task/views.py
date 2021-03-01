@@ -6,13 +6,13 @@ from task.models import Task
 
 def main_view(request):
     tasks = Task.objects.all()
-    context = {'tasks': tasks, 'status_ru': Task.STATUS_CHOICES, 'all': 'filter-btn-active'}
+    context = {'tasks': tasks, 'all': 'filter-btn-active'}
     return render(request, 'main_page.html', context)
 
 
 def add_task_view(request):
     if request.method == 'GET':
-        return render(request, 'add_task.html', {'status': Task.STATUS_CHOICES})
+        return render(request, 'add_task.html')
     elif request.method == 'POST':
         status = request.POST.get('status')
         task_title = request.POST.get('task_title')
@@ -35,8 +35,7 @@ def add_task_view(request):
 
 def detailed_view(request, pk):
     task = get_object_or_404(Task, id=pk)
-    context = {'task': task, 'status_ru': Task.STATUS_CHOICES}
-    return render(request, 'task_detail.html', context)
+    return render(request, 'task_detail.html', {'task': task})
 
 
 def filtered_view(request):
@@ -44,8 +43,7 @@ def filtered_view(request):
     tasks = Task.objects.filter(status=requested_status)
     context = {
         'tasks': tasks,
-        requested_status: 'filter-btn-active',
-        'status_ru': Task.STATUS_CHOICES,
+        requested_status: 'filter-btn-active'
     }
     return render(request, 'main_page.html', context)
 
