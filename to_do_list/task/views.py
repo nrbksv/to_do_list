@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 
 
 from task.models import Task
+from task.forms import TaskForm
 
 
 def main_view(request):
@@ -12,25 +13,19 @@ def main_view(request):
 
 def add_task_view(request):
     if request.method == 'GET':
-        return render(request, 'add_task.html')
+        form = TaskForm()
+        return render(request, 'add_task.html', {'form': form})
     elif request.method == 'POST':
-        status = request.POST.get('status')
-        task_title = request.POST.get('task_title')
-        full_description = request.POST.get('full_description')
-        deadline = request.POST.get('deadline')
-
-        if deadline == '':
-            deadline = None
-        if full_description == '':
-            full_description = None
-
-        tasks = Task.objects.create(
-            status=status,
-            task_title=task_title,
-            full_description=full_description,
-            deadline=deadline
-        )
-        return redirect('task-detail', pk=tasks.id)
+        form = TaskForm(data=request.POST)
+        if form.is_valid():
+            tasks = Task.objects.create(
+                status=form.cleaned_data.get('status'),
+                task_title=form.cleaned_data.get('task_title'),
+                full_description=form.cleaned_data.get('full_description'),
+                deadline=form.cleaned_data.get('deadline')
+            )
+            return redirect('task-detail', pk=tasks.id)
+        return render(request, 'add_task.html', {'form': form})
 
 
 def detailed_view(request, pk):
