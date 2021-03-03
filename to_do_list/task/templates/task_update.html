@@ -1,0 +1,23 @@
+{% extends 'page_pattern.html' %}
+
+{% block content %}
+      <div class="card-header ch">
+        <ul class="nav nav-tabs card-header-tabs">
+          <li class="nav-item">
+            <a class="nav-link nl" href="{% url 'task-list' %}">Все задачи</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link nl" href="{% url 'task-add' %}">Добавить задачу</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link nl-active">Изменить задачу</a>
+          </li>
+        </ul>
+      </div>
+      <div class="card-body mx-4">
+        <form action="" method="POST">
+        {% include "task_form.html" with btn_value="Сохранить изменения" %}
+            <a class="btn btn-secondary" href="{% url 'task-detail' task.id %}">Оменить</a>
+        </form>
+      </div>
+{% endblock %}

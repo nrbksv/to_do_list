@@ -41,8 +41,9 @@
                         <p class="card-text"><i>{{ task.full_description }}</i></p>
                       {% endif %}
                   </div>
-                  <div class="card-footer text-right">
-                  <a class="btn btn-secondary" href="{% url 'task-delete' task.id %}">Удалить</a>
+                  <div class="card-footer d-flex flex-row justify-content-between">
+                      <div><a class="btn btn-secondary" href="{% url 'task-update' task.id %}">Изменить</a></div>
+                      <div><a class="btn btn-secondary" href="{% url 'task-delete' task.id %}">Удалить</a></div>
                   </div>
                 </div>
                   <br>
