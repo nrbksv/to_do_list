@@ -43,7 +43,7 @@
                   </div>
                   <div class="card-footer d-flex flex-row justify-content-between">
                       <div><a class="btn btn-secondary" href="{% url 'task-update' task.id %}">Изменить</a></div>
-                      <div><a class="btn btn-secondary" href="{% url 'task-delete' task.id %}">Удалить</a></div>
+                      <div><a class="btn btn-secondary" href="{% url 'delete-confirm' task.id %}">Удалить</a></div>
                   </div>
                 </div>
                   <br>
@@ -52,4 +52,5 @@
         {% endif %}
       </div>
 {% endblock %}
+
 

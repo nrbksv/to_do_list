@@ -48,6 +48,16 @@ def delete_view(request, pk):
     return redirect('task-list')
 
 
+def delete_confirm_view(request, pk):
+    task = get_object_or_404(Task, id=pk)
+
+    if request.method == 'GET':
+        return render(request, 'delete_confirmation.html', {'task': task})
+    elif request.method == 'POST':
+        task.delete()
+        return redirect('task-list')
+
+
 def task_update_view(request, pk):
     task = get_object_or_404(Task, id=pk)
 

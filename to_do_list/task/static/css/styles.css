@@ -79,4 +79,8 @@
     display: inline-block;
 }
 
-
+.card-body span {
+    font-size: 20px;
+    font-weight: bold;
+    text-decoration: underline;
+}
