@@ -10,10 +10,13 @@
           <div class="card-body cb">
               <p class="card-text"><i>Вы уверены,что хотите удалить задачу:</i> <span class="task-title">{{ task.task_title }}</span></p>
           </div>
+          <form action="{% url 'delete-confirm' task.id %}" method="post">
+              {% csrf_token %}
           <div class="card-footer d-flex flex-row justify-content-end">
               <div><a class="btn btn-success mr-3" href="{% url 'task-detail' task.id %}">Нет, отменить</a></div>
-              <div><a class="btn btn-danger" href="{% url 'task-delete' task.id %}">Да, удалить</a></div>
+              <div><input type="submit" class="btn btn-danger" value="Да, удалить!"></div>
           </div>
+          </form>
         </div>
       </div>
 {% endblock %}

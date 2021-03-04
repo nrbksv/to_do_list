@@ -12,22 +12,20 @@
           </li>
         </ul>
      </div>
-      <div class="card-body mx-4 ">
-      <div class="btn-group mb-4">
-          <a href="{% url 'task-list' %}" class="btn filter-btn {{ all }}" aria-current="page">Все</a>
-          <a href="/task/status?st=new" class="btn filter-btn {{ new }}">Новая</a>
-          <a href="/task/status?st=in_progress" class="btn filter-btn {{ in_progress }}">В процессе</a>
-          <a href="/task/status?st=done" class="btn filter-btn {{ done }}">Сделано</a>
-      </div>
+      <div class="card-body ">
+      {% include 'nav_bar.html' %}
           <br>
         {% if tasks %}
+            <ul>
           {% for task in tasks %}
-                    <div class="card">
-                        <a class="detail-link-1" href="{% url 'task-detail' task.id %}">
-                      <div class="card-header d-flex justify-content-between ch-in">
-                       <div><b>Статус:</b>
+              <li>
+                    <div class="card mr-5">
+                      <div class="card-header ch-in">
+                          <input type="checkbox" name="check-list">
+                      <div class="d-flex justify-content-between">
+                      <div><b>Статус:</b>
                             {{ task.get_status_display }}
-                       </div>
+                      </div>
                       <div>
                         {% if task.deadline %}
                         <p>Выполнить до:
@@ -40,15 +38,17 @@
                         </p>
                       </div>
                       </div>
-                      </a>
+                      </div>
                       <div class="card-body">
                         <p class="card-text"><i>{{ task.task_title | truncatewords_html:3 }}</i></p>
                         <a class="detail-link-2" href="{% url 'task-detail' task.id %}">Подробнее...</a>
                       </div>
                     </div>
+              </li>
                   <br>
           {% endfor %}
         {% else %}
+            </ul>
             <h3>{{ 'Пусто' }}</h3>
         {% endif %}
       </div>

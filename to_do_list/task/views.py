@@ -28,7 +28,7 @@ def add_task_view(request):
         return render(request, 'add_task.html', {'form': form})
 
 
-def detailed_view(request, pk):
+def detail_view(request, pk):
     task = get_object_or_404(Task, id=pk)
     return render(request, 'task_detail.html', {'task': task})
 
@@ -44,11 +44,6 @@ def filtered_view(request):
 
 
 def delete_view(request, pk):
-    Task.objects.get(id=pk).delete()
-    return redirect('task-list')
-
-
-def delete_confirm_view(request, pk):
     task = get_object_or_404(Task, id=pk)
 
     if request.method == 'GET':

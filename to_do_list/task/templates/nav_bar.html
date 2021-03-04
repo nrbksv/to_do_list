@@ -1,0 +1,15 @@
+  <div class="btn-group mb-4 ml-5">
+      <a href="{% url 'task-list' %}" class="btn filter-btn {{ all }}" aria-current="page">Все</a>
+      <a href="/task/status?st=new" class="btn filter-btn {{ new }}">Новая</a>
+      <a href="/task/status?st=in_progress" class="btn filter-btn {{ in_progress }}">В процессе</a>
+      <a href="/task/status?st=done" class="btn filter-btn {{ done }}">Сделано</a>
+
+      <div class="ml-4">
+          <label for="">Действие:</label>
+          <select name="action" id="">
+              <option value="" selected="">---------</option>
+              <option value="delete_selected">Удалить выбранные задачи</option>
+          </select>
+          <a class="btn btn-danger btn-sm" type="submit" href="">Выполнить</a>
+      </div>
+  </div>

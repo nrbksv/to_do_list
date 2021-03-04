@@ -52,12 +52,6 @@
     transition: 150ms;
 }
 
-.detail-link-1:hover {
-    text-decoration: none;
-    color: black;
-    transform: scaleX(1.01);
-}
-
 .detail-link-2 {
     text-decoration: none;
     color: #818181;
@@ -83,4 +77,8 @@
     font-size: 20px;
     font-weight: bold;
     text-decoration: underline;
+}
+
+ul {
+    list-style: none;
 }
